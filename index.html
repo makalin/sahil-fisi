@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SAHİL HESABI — Bitmeyen Fiş</title>
+<meta name="description" content="Bir şezlong, iki kahve, üç su… ve hiç bitmeyen bir hesap. Sahil fiyatlarını hicveden sonsuz fiş.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://makalin.github.io/sahil-fisi/">
+<meta property="og:title" content="SAHİL HESABI — Deniz bedava. Hesap değil.">
+<meta property="og:description" content="Bir şezlong, iki kahve, üç su… ve hiç bitmeyen bir hesap.">
+<meta property="og:image" content="https://makalin.github.io/sahil-fisi/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SAHİL HESABI — Deniz bedava. Hesap değil.">
+<meta name="twitter:description" content="Bir şezlong, iki kahve, üç su… ve hiç bitmeyen bir hesap.">
+<meta name="twitter:image" content="https://makalin.github.io/sahil-fisi/og-image.png">
+<meta name="theme-color" content="#071a23">
+<style>
+:root{color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#071a23;color:#fff;font-family:Arial,Helvetica,sans-serif}
+body:before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 50% 100%,#1b6570 0%,#103844 35%,#071a23 80%);pointer-events:none}
+.grain{position:fixed;inset:0;opacity:.11;pointer-events:none;z-index:1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.top{position:fixed;z-index:5;top:0;left:0;right:0;padding:25px clamp(20px,5vw,70px);display:flex;justify-content:space-between;align-items:start;pointer-events:none}
+.brand{font-size:12px;letter-spacing:.25em;font-weight:800}
+.subtitle{font-size:10px;letter-spacing:.15em;color:#8bb6bc;margin-top:7px}
+.counter{text-align:right;font-family:monospace;font-size:12px;line-height:1.8}
+.counter strong{font-size:18px;color:#d5f9e6}
+.glow{position:fixed;top:15%;left:50%;transform:translateX(-50%);width:min(70vw,600px);height:70vh;border-radius:50%;background:#6ebfbd;filter:blur(110px);opacity:.13;pointer-events:none}
+
+/* Sahne sabit: sayfa asla kaymaz, fişin başı/sonu yumuşakça kaybolur */
+.stage{position:fixed;inset:0;overflow:hidden;display:flex;justify-content:center;z-index:2;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%);
+          mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%)}
+/* Eğim sabit boyutlu sarmalayıcıda: içerik değişse de dönme merkezi oynamaz */
+.tilt{width:min(380px,82vw);height:100%;transform:rotate(-2deg);filter:drop-shadow(22px 15px 23px #0009)}
+.receipt-track{will-change:transform}
+.chunk{background:#f0eddf;color:#202b2b;padding:0 27px;font-family:'Courier New',monospace;font-size:12px;line-height:1.6;position:relative}
+.chunk.head{padding-top:24px}
+.chunk.head:before{content:"";position:absolute;top:-8px;left:0;right:0;height:9px;background:linear-gradient(45deg,#f0eddf 25%,transparent 25%) -8px 0/16px 16px,linear-gradient(-45deg,#f0eddf 25%,transparent 25%) -8px 0/16px 16px}
+.shop{text-align:center;font-weight:bold;font-size:19px;letter-spacing:.12em}
+.shopsub{text-align:center;font-size:10px;letter-spacing:.12em}
+.dash{border:0;border-top:1px dashed #53615d;margin:0;padding-top:12px;margin-top:12px}
+.meta{display:flex;justify-content:space-between;font-size:10px}
+.item{display:flex;justify-content:space-between;gap:8px;padding:5px 0}
+.item span:last-child{white-space:nowrap}
+.item.neg span:last-child{color:#2c7a5c}
+.item small{display:block;font-size:9px;color:#6a7672}
+.sub{display:flex;justify-content:space-between;font-weight:bold;font-size:13px;padding:4px 0}
+.sub span:last-child{white-space:nowrap}
+.joke{font-size:10px;text-align:center;padding:8px 0;letter-spacing:.04em}
+.joke.loud{font-weight:bold;font-size:11px}
+.barcode{height:34px;margin:10px auto 4px;width:80%;background:repeating-linear-gradient(90deg,#1b2928 0 2px,transparent 2px 5px,#1b2928 5px 6px,transparent 6px 9px,#1b2928 9px 13px,transparent 13px 16px)}
+.chunk:last-child{padding-bottom:4px}
+
+.controls{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:8px;align-items:center;background:#071b20dc;border:1px solid #47747b66;border-radius:50px;padding:7px;backdrop-filter:blur(14px)}
+button{border:0;border-radius:30px;background:#e4f4e8;color:#0b272a;padding:11px 17px;cursor:pointer;font-weight:bold;font-size:12px}
+button.secondary{background:transparent;color:#d9f3e8}
+button:hover{filter:brightness(.85)}
+.side{position:fixed;left:clamp(20px,5vw,70px);bottom:34px;z-index:3;font-size:clamp(20px,3.5vw,52px);font-weight:900;letter-spacing:-.04em;line-height:.95;pointer-events:none}
+.side em{font-style:normal;color:#7cc9bd}
+.note{position:fixed;right:clamp(20px,5vw,70px);bottom:35px;z-index:3;font-size:10px;max-width:190px;line-height:1.6;text-align:right;color:#9ec0c1}
+@media(max-width:850px){.side{top:100px;bottom:auto;font-size:24px}.note{display:none}.chunk{font-size:11px;padding:0 20px}.chunk.head{padding-top:22px}.controls{bottom:15px}.top{padding:18px}.counter strong{font-size:14px}}
+.share{position:fixed;bottom:84px;left:50%;transform:translate(-50%,10px);z-index:11;width:min(340px,calc(100vw - 32px));background:#071b20f2;border:1px solid #47747b66;border-radius:18px;padding:14px;backdrop-filter:blur(14px);opacity:0;pointer-events:none;transition:.18s}
+.share.open{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+.share p{margin:0 0 10px;font-size:11px;line-height:1.5;color:#9ec0c1}
+.share p b{color:#d5f9e6}
+.share .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.share a,.share .copy{display:flex;align-items:center;gap:8px;text-decoration:none;color:#e4f4e8;background:#ffffff0d;border-radius:12px;padding:10px 12px;font-size:12px;font-weight:bold}
+.share a:hover,.share .copy:hover{background:#ffffff1f;filter:none}
+.share i{width:10px;height:10px;border-radius:50%;flex:none}
+.share .copy{grid-column:1/-1;justify-content:center;border:0}
+@media(max-width:850px){.share{bottom:72px}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="top">
+  <div><div class="brand">SAHİL HESABI™</div><div class="subtitle">BİTMEYEN YAZ FATURASI / 2026</div></div>
+  <div class="counter">KALEM <span id="count">000000</span><br>TOPLAM <strong id="sum">₺0</strong></div>
+</div>
+<div class="glow"></div>
+<div class="side">DENİZ BEDAVA.<br><em>HESAP DEĞİL.</em></div>
+<div class="note">Bu site hiciv amaçlıdır. Fiyatlar kurgusaldır, gerçek işletmeleri temsil etmez.</div>
+<main class="stage"><div class="tilt"><div id="track" class="receipt-track"></div></div></main>
+<div class="controls">
+  <button id="toggle">Ⅱ DURDUR</button>
+  <button class="secondary" id="faster">HIZ ×1</button>
+  <button class="secondary" id="reset">↺ BAŞA</button>
+  <button id="shareBtn">↗ PAYLAŞ</button>
+</div>
+<div class="share" id="share" role="dialog" aria-label="Paylaş">
+  <p>Hesabın şu an <b id="shareSum">₺0</b>. Arkadaşlarına da kessinler.</p>
+  <div class="grid">
+    <a data-net="x" target="_blank" rel="noopener"><i style="background:#fff"></i>X / Twitter</a>
+    <a data-net="wa" target="_blank" rel="noopener"><i style="background:#25d366"></i>WhatsApp</a>
+    <a data-net="tg" target="_blank" rel="noopener"><i style="background:#29a9eb"></i>Telegram</a>
+    <a data-net="fb" target="_blank" rel="noopener"><i style="background:#1877f2"></i>Facebook</a>
+    <a data-net="li" target="_blank" rel="noopener"><i style="background:#0a66c2"></i>LinkedIn</a>
+    <a data-net="bs" target="_blank" rel="noopener"><i style="background:#1185fe"></i>Bluesky</a>
+    <button class="copy" id="copyLink">🔗 Bağlantıyı kopyala</button>
+  </div>
+</div>
+<script>
+// [ad, min, max, (ops.) alt not]
+const menu=[
+  ['Şezlong (1 adet)',950,2800],['Şemsiye gölgesi',450,1250],['Küçük su (330 ml)',150,400],
+  ['Türk kahvesi',280,750],['Buzlu latte',390,850],['Limonata',320,780],['Çay (ince belli)',90,250],
+  ['Patates kızartması',550,1250],['Hamburger',850,1950],['Makarna',750,1800],['Tost (kaşarı hayal)',450,950],
+  ['Meyve tabağı',1200,3500],['Karpuz dilimi (ince)',300,900,'ışığa tutunca görünüyor'],['Mısır (yarım)',250,600],
+  ['Midye dolma (1 adet)',60,180],['Dondurma topu (minik)',180,450],['Ayran (köpüksüz)',150,350],
+  ['Servis bedeli',500,1900],['Deniz manzarası',900,3500],['Plaj giriş ücreti',1200,4500],
+  ['Havlu kiralama',350,1100],['Otopark',400,1200],['Buz ilavesi',120,350],['Wi-Fi erişimi',250,650],
+  ['VIP kum tanesi',150,500],['Gün batımı (premium)',800,2400,'bulutlu ise iade yok'],
+  ['Dalga sesi (stereo)',300,900],['Rüzgâr kullanım bedeli',200,700],['Gölge kaydırma (öğleden sonra)',400,1100],
+  ['Menüye bakma ücreti',100,300],['Fiyat sorma cezası',250,800],['Hesap getirme hizmeti',200,600],
+  ['Peçete (tek kat)',20,60],['Tuvalet anahtarı depozitosu',300,900],['Duş (soğuk, 40 sn)',150,450],
+  ['Telefon şarjı (%1)',100,300],['Selfie arka plan lisansı',350,950],['Story telif ücreti',400,1200,'etiketlemezseniz 2 katı'],
+  ['Martıya kaptırılan simit',120,250,'tekrar sipariş edildi'],['Kumdan kale ruhsatı',500,1500],
+  ['Islak mayoyla oturma farkı',200,600],['Denize bakan taraf farkı',600,1800],['Sessiz köşe farkı',400,1300],
+  ['Garsonun bakış ücreti',150,500],['Garson gülümsemesi',200,600,'samimi değildi'],['Bahşiş (zorunlu-gönüllü)',300,1000],
+  ['Kart çekme komisyonu',150,500],['Nakit ödeme rahatsızlığı',200,600],['Döviz kuru endişesi',300,900],
+  ['Sezon farkı',500,1500],['Hafta sonu farkı',400,1200],['"Bugün çok sıcak" farkı',250,800],
+  ['Güneş kremi koklama',80,250],['Ayakkabıdan kum boşaltma',150,450],['Şezlong yanına çanta koyma',200,550],
+  ['Masa silme (tek yön)',100,300],['Klima yok bedeli',300,700],['Hayal kırıklığı (orta boy)',350,950],
+  ['Çocuk kahkahası gürültü payı',200,500],['Denizanası sigortası',250,700],['Kum ithalat vergisi',300,900],
+];
+const discounts=[['Sadakat indirimi',1],['Yerel halk indirimi',2,'iptal edildi, yine de yazdık'],['Erken gelen indirimi',1],['Güler yüz indirimi',3]];
+const jokes=['KREDİ KARTINIZ TERLEMEYE BAŞLADI','BANKANIZ SİZİ ARIYOR','TAKSİT SEÇENEKLERİ: 3 • 6 • 9 • 48 AY',
+  'DENİZ HÂLÂ BEDAVA (ŞİMDİLİK)','KDV DAHİL DEĞİL. KDV DE ŞAŞIRDI.','BU FİŞ HENÜZ BİTMEDİ','LÜTFEN AYAĞA KALKMAYIN, KALKMA ÜCRETİ VAR',
+  'MANZARAYA FAZLA BAKTINIZ','SEZON SONUNA KADAR AÇIK HESAP','EMEKLİ İKRAMİYESİ YETMEDİ, DEVAM EDİLİYOR',
+  'GARSON SİZİ HÂLÂ GÖRÜYOR','KAĞIT BİTERSE KAĞIT ÜCRETİ ALINIR','HESAP SİZE, MANZARA BİZE','SEVDİKLERİNİZE HABER VERİN',
+  'TATİLİNİZ BİTTİ. TAKSİTLER DEVAM EDİYOR.','BİR SONRAKİ YAZA DEVREDİYOR...','POS CİHAZI ISINDI, SOĞUTMA BEDELİ YANSITILDI'];
+const loud=['*** GARSON SİZE GÜLÜMSEDİ ***','*** ŞEZLONG GICIRDADI ***','*** BİR MARTI MASANIZA KONDU ***','*** HAVA BİR DERECE ISINDI ***','*** MÜDÜR GEÇERKEN SELAM VERDİ ***'];
+
+const track=document.getElementById('track'),count=document.getElementById('count'),sum=document.getElementById('sum');
+let lines=0,grand=0,offset=0,last=0,paused=false,speed=1,chunkNo=0,bag=[];
+const fmt=n=>(n<0?'-':'')+'₺'+Math.abs(n).toLocaleString('tr-TR');
+const rand=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const price=(a,b)=>Math.max(10,Math.round(rand(a,b)/10)*10);
+// karıştırılmış torba: aynı kalem art arda tekrar etmesin
+function nextItem(){if(!bag.length)bag=[...menu].sort(()=>Math.random()-.5);return bag.pop()}
+function row(name,p,note,cls=''){
+  lines++;grand+=p;
+  return `<div class="item ${cls}"><span>${name}${note?`<small>* ${note}</small>`:''}</span><span>${fmt(p)}</span></div>`;
+}
+function updateCounter(){count.textContent=String(lines).padStart(6,'0');sum.textContent=fmt(grand)}
+
+function makeChunk(){
+  chunkNo++;
+  const el=document.createElement('section');el.className='chunk';let html='',sub=0;
+  if(chunkNo===1){
+    el.classList.add('head');
+    html+=`<div class="shop">SAHİL HESABI</div><div class="shopsub">AKDENİZ • EGE • MARMARA</div><hr class="dash">
+      <div class="meta"><span>FİŞ NO: ${String(rand(1,999999)).padStart(6,'0')}</span><span>MASA: ${rand(1,99)}</span></div>
+      <div class="meta"><span>YAZ SEZONU / 2026</span><span>${String(rand(10,23)).padStart(2,'0')}:${String(rand(0,59)).padStart(2,'0')}</span></div><hr class="dash">`;
+  }
+  const n=rand(4,7);
+  for(let i=0;i<n;i++){
+    const [name,min,max,note]=nextItem();
+    const qty=Math.random()<.18?rand(2,4):1;
+    const p=price(min,max)*qty;sub+=p;
+    html+=row(qty>1?`${qty} x ${name}`:name,p,note);
+  }
+  if(Math.random()<.35){const p=price(150,600);sub+=p;html+=`<div class="joke loud">${pick(loud)}</div>`+row('Duygusal etkileşim bedeli',p)}
+  if(Math.random()<.15){const [name,d,note]=pick(discounts);sub-=d;html+=row(name,-d,note,'neg')}
+  const service=Math.max(10,Math.round(sub*.12/10)*10);
+  html+=row('Ek hizmet (%12)',service);sub+=service;
+  html+=`<div class="sub"><span>ARA TOPLAM #${chunkNo}</span><span>${fmt(sub)}</span></div>`;
+  html+=`<div class="sub"><span>GENEL TOPLAM</span><span>${fmt(grand)}</span></div>`;
+  if(chunkNo%4===0)html+=`<div class="barcode"></div>`;
+  html+=`<div class="joke">${pick(jokes)}</div><hr class="dash">`;
+  el.innerHTML=html;track.appendChild(el);updateCounter();
+}
+// ekranın en az 2.5 katı kadar fiş hep hazırda dursun: sonu asla görünmez
+function fill(){while(track.offsetHeight-offset<innerHeight*2.5)makeChunk()}
+function start(){track.innerHTML='';lines=grand=chunkNo=0;bag=[];offset=-innerHeight*.3;fill();track.style.transform=`translate3d(0,${-offset}px,0)`}
+
+function frame(t){
+  const dt=Math.min((t-last)||16,50);last=t;
+  if(!paused){
+    offset+=dt*.055*speed;
+    // üstten çıkan parçayı at, aynı miktarı offset'ten düş: görüntü kımıldamaz
+    let first=track.firstElementChild;
+    while(first&&offset>first.offsetHeight+200){offset-=first.offsetHeight;first.remove();first=track.firstElementChild}
+    fill();
+    track.style.transform=`translate3d(0,${-offset}px,0)`;
+  }
+  requestAnimationFrame(frame);
+}
+start();requestAnimationFrame(frame);
+document.getElementById('toggle').onclick=e=>{paused=!paused;e.target.textContent=paused?'▶ DEVAM':'Ⅱ DURDUR'};
+document.getElementById('faster').onclick=e=>{speed=speed===1?2:speed===2?4:1;e.target.textContent='HIZ ×'+speed};
+document.getElementById('reset').onclick=start;
+// ---- Paylaşım ----
+const SITE='https://makalin.github.io/sahil-fisi/';
+const shareEl=document.getElementById('share');
+const shareText=()=>`Sahilde oturdum, hesap ${fmt(grand)} oldu ve fiş hâlâ yazıyor 🧾🏖️ Deniz bedava, hesap değil.`;
+const links={
+  x:(t,u)=>`https://twitter.com/intent/tweet?text=${t}&url=${u}`,
+  wa:(t,u)=>`https://wa.me/?text=${t}%20${u}`,
+  tg:(t,u)=>`https://t.me/share/url?url=${u}&text=${t}`,
+  fb:(t,u)=>`https://www.facebook.com/sharer/sharer.php?u=${u}`,
+  li:(t,u)=>`https://www.linkedin.com/sharing/share-offsite/?url=${u}`,
+  bs:(t,u)=>`https://bsky.app/intent/compose?text=${t}%20${u}`
+};
+function openShare(){
+  document.getElementById('shareSum').textContent=fmt(grand);
+  const t=encodeURIComponent(shareText()),u=encodeURIComponent(SITE);
+  shareEl.querySelectorAll('a[data-net]').forEach(a=>a.href=links[a.dataset.net](t,u));
+  shareEl.classList.add('open');
+}
+document.getElementById('shareBtn').onclick=async e=>{
+  e.stopPropagation();
+  // Telefonda sistemin kendi paylaşım menüsü: Instagram, WhatsApp, her yer
+  if(navigator.share&&matchMedia('(pointer:coarse)').matches){
+    try{await navigator.share({title:'SAHİL HESABI',text:shareText(),url:SITE});return}catch(err){if(err.name==='AbortError')return}
+  }
+  shareEl.classList.contains('open')?shareEl.classList.remove('open'):openShare();
+};
+document.getElementById('copyLink').onclick=async e=>{
+  const b=e.currentTarget,txt=shareText()+' '+SITE;
+  try{await navigator.clipboard.writeText(txt)}catch{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}
+  b.textContent='✓ Kopyalandı';setTimeout(()=>b.textContent='🔗 Bağlantıyı kopyala',1600);
+};
+document.addEventListener('click',e=>{if(!shareEl.contains(e.target))shareEl.classList.remove('open')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')shareEl.classList.remove('open')});
+</script>
+</body>
+</html>
