@@ -30,9 +30,7 @@ python3 -m http.server 8000
 
 Tarayıcıdan `http://localhost:8000` adresini aç.
 
-**GitHub Pages:** [https://makalin.github.io/sahil-fisi/](https://makalin.github.io/sahil-fisi/)
-
-*Pages etkinleştirildiğinde erişilebilir.*
+**🌊 Canlı:** [https://makalin.github.io/sahil-fisi/](https://makalin.github.io/sahil-fisi/)
 
 ## 🤝 Açık Kaynak
 

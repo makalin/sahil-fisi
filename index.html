@@ -26,6 +26,7 @@ body:before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse
 .top{position:fixed;z-index:5;top:0;left:0;right:0;padding:25px clamp(20px,5vw,70px);display:flex;justify-content:space-between;align-items:start;pointer-events:none}
 .brand{font-size:12px;letter-spacing:.25em;font-weight:800}
 .subtitle{font-size:10px;letter-spacing:.15em;color:#8bb6bc;margin-top:7px}
+.gh{display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:9px;letter-spacing:.15em;color:#8bb6bc;text-decoration:none;pointer-events:auto;opacity:.8}.gh:hover{opacity:1;color:#fff}.gh svg{width:11px;height:11px;fill:currentColor}
 .counter{text-align:right;font-family:monospace;font-size:12px;line-height:1.8}
 .counter strong{font-size:18px;color:#d5f9e6}
 .glow{position:fixed;top:15%;left:50%;transform:translateX(-50%);width:min(70vw,600px);height:70vh;border-radius:50%;background:#6ebfbd;filter:blur(110px);opacity:.13;pointer-events:none}
@@ -62,7 +63,7 @@ button:hover{filter:brightness(.85)}
 .side{position:fixed;left:clamp(20px,5vw,70px);bottom:34px;z-index:3;font-size:clamp(20px,3.5vw,52px);font-weight:900;letter-spacing:-.04em;line-height:.95;pointer-events:none}
 .side em{font-style:normal;color:#7cc9bd}
 .note{position:fixed;right:clamp(20px,5vw,70px);bottom:35px;z-index:3;font-size:10px;max-width:190px;line-height:1.6;text-align:right;color:#9ec0c1}
-@media(max-width:850px){.side{top:100px;bottom:auto;font-size:24px}.note{display:none}.chunk{font-size:11px;padding:0 20px}.chunk.head{padding-top:22px}.controls{bottom:15px}.top{padding:18px}.counter strong{font-size:14px}}
+@media(max-width:850px){.side{top:110px;bottom:auto;font-size:24px}.note{display:none}.chunk{font-size:11px;padding:0 20px}.chunk.head{padding-top:22px}.controls{bottom:15px}.top{padding:18px}.counter strong{font-size:14px}}
 .share{position:fixed;bottom:84px;left:50%;transform:translate(-50%,10px);z-index:11;width:min(340px,calc(100vw - 32px));background:#071b20f2;border:1px solid #47747b66;border-radius:18px;padding:14px;backdrop-filter:blur(14px);opacity:0;pointer-events:none;transition:.18s}
 .share.open{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
 .share p{margin:0 0 10px;font-size:11px;line-height:1.5;color:#9ec0c1}
@@ -78,7 +79,7 @@ button:hover{filter:brightness(.85)}
 <body>
 <div class="grain"></div>
 <div class="top">
-  <div><div class="brand">SAHİL HESABI™</div><div class="subtitle">BİTMEYEN YAZ FATURASI / 2026</div></div>
+  <div><div class="brand">SAHİL HESABI™</div><div class="subtitle">BİTMEYEN YAZ FATURASI / 2026</div><a class="gh" href="https://github.com/makalin/sahil-fisi" target="_blank" rel="noopener" aria-label="Kaynak kodu GitHub'da"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GITHUB</a></div>
   <div class="counter">KALEM <span id="count">000000</span><br>TOPLAM <strong id="sum">₺0</strong></div>
 </div>
 <div class="glow"></div>
